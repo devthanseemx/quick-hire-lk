@@ -1,13 +1,3 @@
-<?php
-// Start the session to check if the user is already logged in
-session_start();
-
-// If the user is already logged in, redirect them to the dashboard
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-  header("Location: ../layouts/user/user-dashboard.php");
-  exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +5,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Page</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
   <!-- Tailwind CSS File or CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Bootstrap Icons -->
@@ -23,18 +14,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
-<body class="m-0 h-screen box-border flex flex-row-reverse gap-8 bg-white">
+<body class="m-0 h-screen box-border flex flex-row gap-8 bg-white p-5 md:p-2">
 
   <!-- Left Image Side -->
-  <div class="hidden md:block w-1/2 h-full overflow-hidden ">
-    <img src="../assets/images/login-bg.jpg" alt="Login Background" class="w-full h-full object-cover" />
+  <div class="hidden md:block w-1/2 h-full overflow-hidden rounded-xl">
+    <img src="../assets/images/login-image.jpg" alt="Login Background" class="w-full h-full object-cover" />
   </div>
 
   <!-- Right Form Side -->
   <div class="w-full md:w-1/2 h-full flex items-center">
     <div class="w-full max-w-md mx-auto">
-      <h2 class="text-3xl font-bold mb-3">Login</h2>
-      <p class="text-gray-500 mb-10">Please enter your details to login</p>
+      <h2 class="text-3xl font-bold mb-3 text-center">Login</h2>
+      <p class="text-gray-500 text-center mb-20">Please enter your details to login</p>
 
       <form id="login-form" action="login-api.php" method="POST" novalidate>
         <div class="mb-5">

@@ -19,6 +19,7 @@ unset($_SESSION['user_type']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - QuickHire LK </title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
@@ -27,14 +28,14 @@ unset($_SESSION['user_type']);
 
     <!-- Left Image Side -->
     <div class="hidden md:block w-1/2 h-full overflow-hidden rounded-xl">
-        <img src="../assets/images/signup-bg.jpg" alt="Office Background" class="w-full h-full object-cover" />
+        <img src="../assets/images/signup-image.png" alt="Office Background" class="w-full h-full object-cover" />
     </div>
 
     <!-- Right Form Side -->
     <div class="w-full md:w-1/2 h-full flex items-center">
         <div class="w-full max-w-md mx-auto">
-            <h2 class="text-3xl font-bold mb-3">Sign Up</h2>
-            <p class="text-gray-500 mb-10">
+            <h2 class="text-3xl font-bold mb-3 text-center">Sign Up</h2>
+            <p class="text-gray-500 custom-margin text-center">
                 <?php
                 // Display a custom message for verified users
                 if ($user_type === 'employee' || $user_type === 'admin') {
