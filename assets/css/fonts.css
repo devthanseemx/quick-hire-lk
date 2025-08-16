@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'KugileFont';
+    src: url('/assets/fonts/Kugile.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-Libre {
+    font-family: 'Libre Baskerville', serif;
+}
+
+.font-display {
+    font-family: 'KugileFont', serif;
+}
+
+.font-signature {
+    font-family: 'Kunstler Script', cursive;
+}
+
+.font-Ruwudu {
+    font-family: 'Ruwudu', cursive;
+}
+
+.font-Roboto {
+    font-family: 'Roboto', sans-serif;
+}

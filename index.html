@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickHire LK - Section as Parent</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body class="flex flex-col select-none">
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero relative p-2 sm:p-4 h-screen">
+
+        <!-- ONE image behind, three windows in front -->
+        <div class="videos-container absolute inset-0 z-0 p-2 m-2">
+
+            <!-- Continuous background image (only once) -->
+            <video autoplay muted loop playsinline
+                class="absolute inset-0 w-full h-full object-cover rounded-xl z-0 pointer-events-none select-none">
+                <source src="assets/videos/Hero-Section-Bg.mp4" type="video/mp4">
+            </video>
+
+
+            <!-- Mobile top-left window -->
+            <div
+                class="window md:hidden absolute top-0 right-0 h-16 w-[15%] rounded-tr-md rounded-bl-md overflow-hidden bg-transparent window-border z-10 flex justify-center items-center mb-5">
+                <button id="menu-btn" class="lg:hidden relative z-40">
+                    <i class="bi bi-list text-4xl text-white font-extrabold"></i>
+                </button>
+            </div>
+
+            <!-- Desktop top-left window -->
+            <div
+                class="window desktop-window hidden lg:block absolute top-0 left-1 h-[60%] rounded-tl-lg rounded-br-xl overflow-hidden bg-transparent window-border z-10bg-white">
+            </div>
+
+            <!-- Bottom-right window -->
+            <div
+                class="window hidden md:block absolute bottom-0 right-0 h-[30%] w-[24%] md:w-[30%] md:rounded-tl-xl overflow-hidden bg-transparent window-border z-10">
+            </div>
+
+            <!-- Bottom-left window for mobile -->
+            <div
+                class="window absolute bottom-0 left-0 right-0 h-[30%] w-[24%]  rounded-tr-xl overflow-hidden bg-transparent window-border z-10 sm:hidden">
+            </div>
+
+        </div>
+
+        <!-- Logo for mobile -->
+        <h3 class=" md:hidden text-white w-fit uppercase text-xl font-bold relative z-30 top-6 left-5">QuickHire LK</h3>
+
+        <!-- Navigation Bar -->
+        <div class="relative z-10 h-full flex flex-col mt-5">
+
+            <nav
+                class="hidden lg:flex w-full custom-width mx-auto mt-8 px-6 py-5 justify-between items-center z-30 text-white">
+
+                <div class="text-3xl uppercase animate-on-scroll fade-in-right">QuickHire LK</div>
+
+                <div class="flex items-center space-x-16 max-w-7xl">
+
+                    <div class="hidden lg:flex items-center space-x-12">
+                        <a href="#services" class="nav-link hover:text-black animate-on-scroll fade-in-right"
+                            style="animation-delay: 200ms;">Services</a>
+                        <a href="#how-it-works" class="nav-link hover:text-black animate-on-scroll fade-in-right"
+                            style="animation-delay: 300ms;">How It
+                            Works</a>
+                        <a href="#about" class="nav-link hover:text-black animate-on-scroll fade-in-right"
+                            style="animation-delay: 400ms;">About</a>
+
+                        <div class="relative" id="more-dropdown-container">
+                            <a href="#"
+                                class="nav-link hover:text-black flex items-center cursor-pointer animate-on-scroll fade-in-right"
+                                style="animation-delay: 500ms;">
+                                <span>More</span>
+                            </a>
+                            <div id="dropdown-menu"
+                                class="absolute -left-8 mt-2 w-fit whitespace-nowrap bg-white rounded-lg shadow-xl hidden">
+                                <div class="py-2">
+                                    <a href="#footer"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100">Contact Us</a>
+                                    <a href="authentication/verify-id.php"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-100">For Office
+                                        Use</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sign in button -->
+                    <a href="authentication/login.php"
+                        class="inline-block font-bold py-2 px-14 rounded-lg shadow-lg relative overflow-hidden text-black sign-in-btn animate-on-scroll fade-in-right animation-delay-400">
+                        Sign in
+                    </a>
+
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu"
+                class="fixed inset-0 z-30 bg-black bg-opacity-30 transition-opacity duration-300 ease-in-out lg:hidden opacity-0 invisible">
+
+                <div id="mobile-menu-panel"
+                    class="bg-white w-3/4 max-w-sm h-full p-4 transition-transform duration-300 ease-in-out transform -translate-x-full">
+
+                    <div class="flex flex-col space-y-3 mt-10">
+                        <a href="#hero" class="nav-link block px-3 py-2 rounded-md text-gray-700">Home</a>
+                        <a href="#services" class="nav-link block px-3 py-2 rounded-md text-gray-700">Services</a>
+                        <a href="#how-it-works" class="nav-link block px-3 py-2 rounded-md text-gray-700">How It
+                            Works</a>
+                        <a href="#about" class="nav-link block px-3 py-2 rounded-md text-gray-700">About</a>
+                        <a href="#footer" class="nav-link block px-3 py-2 rounded-md text-gray-700">Contact Us</a>
+                        <div class="w-full p-2">
+                            <button class="bg-indigo-700 py-2 px-4 rounded-xl text-white font-medium mt-3 w-full"> <a href="authentication/login.php">Sign in</a> </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                class="flex-grow flex flex-col mt-15 px-6 justify-around w-full custom-width lg:custom-width lg:mt-1 mx-auto">
+                <div class="max-w-4xl text-center md:text-left text-white flex flex-col items-center md:items-start">
+                    <span
+                        class="bg-white text-gray-800 text-xs font-semibold px-4 py-1 rounded-full text-nowrap mt-10 mb-5 lg:mt-8 xl:mt-10 animate-on-scroll fade-in-up">
+                        The #1 Job Platform in Sri Lanka
+                    </span>
+
+                    <h1 class="mt-8 cus-font-size font-medium lg:text-6xl xl:text-7xl animate-on-scroll fade-in-up"
+                        style="animation-delay: 200ms;">Find Work. Hire Talent.</h1>
+                    <h1 class="mt-2 md:mt-5 cus-font-size font-medium lg:text-6xl xl:text-7xl animate-on-scroll fade-in-up"
+                        style="animation-delay: 300ms;">Grow Your Business.</h1>
+
+                    <hr class="mt-10 mb-5 border-gray-100 w-80 lg:w-full lg:mt-10 animate-on-scroll fade-in-up"
+                        style="animation-delay: 400ms;">
+
+                    <p class="text-sm mt-1 mb-10 lg:text-lg animate-on-scroll fade-in-up"
+                        style="animation-delay: 500ms;">
+                        Connect with the best professionals or find your dream job. QuickHire LK brings together top
+                        talent
+                        and exciting opportunities in one platform.
+                    </p>
+                </div>
+
+                <!-- The container for the scrolling gallery (Desktop) -->
+                <div class="hidden md:block h-48 w-2/3 mt-8 overflow-hidden relative lg:-mt-2 rounded-lg">
+                    <div id="scrolling-gallery" class="flex whitespace-nowrap animate-scroll">
+
+                        <div class="gallery-image-set flex-shrink-0 flex">
+                            <img src="assets/images/image1.jpg" alt="img1" class="gallery-image" />
+                            <img src="/assets/images/image2.jpg" alt="img2" class="gallery-image" />
+                            <img src="/assets/images/image3.jpg" alt="img3" class="gallery-image" />
+                            <img src="/assets/images/image4.jpg" alt="img4" class="gallery-image" />
+                            <img src="/assets/images/image5.jpg" alt="img5" class="gallery-image" />
+                            <img src="/assets/images/image6.jpg" alt="img6" class="gallery-image" />
+                            <img src="/assets/images/image7.jpg" alt="img7" class="gallery-image" />
+                            <img src="/assets/images/image8.jpg" alt="img8" class="gallery-image" />
+                            <img src="/assets/images/image9.jpg" alt="img9" class="gallery-image" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The container for the scrolling gallery (Mobile) -->
+                <div class="w-full flex flex-row">
+                    <div class="w-[35%]"></div>
+                    <div class="md:hidden h-48 w-[65%] mt-8 overflow-hidden relative lg:-mt-2 rounded-lg">
+                        <div id="scrolling-gallery" class="flex whitespace-nowrap animate-scroll">
+                            <div class="gallery-image-set flex-shrink-0 flex">
+                                <img src="assets/images/image1.jpg" alt="img1" class="gallery-image" />
+                                <img src="/assets/images/image2.jpg" alt="img2" class="gallery-image" />
+                                <img src="/assets/images/image3.jpg" alt="img3" class="gallery-image" />
+                                <img src="/assets/images/image4.jpg" alt="img4" class="gallery-image" />
+                                <img src="/assets/images/image5.jpg" alt="img5" class="gallery-image" />
+                                <img src="/assets/images/image6.jpg" alt="img6" class="gallery-image" />
+                                <img src="/assets/images/image7.jpg" alt="img7" class="gallery-image" />
+                                <img src="/assets/images/image8.jpg" alt="img8" class="gallery-image" />
+                                <img src="/assets/images/image9.jpg" alt="img9" class="gallery-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="custom-width mx-auto px-6 flex flex-col mb-8">
+
+        <!-- Services Section -->
+        <section id="services" class="bg-white py-20 lg:py-28">
+            <div class="text-center mb-12 lg:mb-16 animate-on-scroll fade-in-up">
+                <span
+                    class="inline-block px-2 py-1 md:px-5 md:py-2 mb-5 md:mb-8 rounded-full bg-blue-100 text-blue-800 text-xs md:text-sm font-semibold">
+                    OUR SERVICES
+                </span>
+                <h2 class="mt-4 text-2xl md:text-4xl md:mb-10 lg:text-5xl font-bold text-gray-900">
+                    Everything you Need to Find Your Dream Job
+                </h2>
+                <p class="mt-6 mx-auto max-w-2xl text-sm md:text-lg text-gray-600">
+                    QuickHire LK provides a comprehensive suite of tools and features designed to make your job search
+                    efficient and successful.
+                </p>
+            </div>
+
+            <div
+                class="service-card-container mt-16 md:mt-20 overflow-y-auto h-64 md:h-auto md:pb-5 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 scroll-smooth">
+                <!-- Card 1 -->
+                <div id="service-card-1"
+                    class="service-card animate-on-scroll fade-in-up h-fit flex flex-col justify-center items-center px-6 py-10 md:items-start md:text-left md:px-8 text-center"
+                    style="scroll-snap-align: start; animation-delay: 200ms;">
+                    <div class="service-icon mb-4 text-5xl">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg md:text-xl">
+                        Smart Job Matching
+                    </h3>
+                    <p class="mt-2 text-gray-600 text-base md:text-base max-w-md">
+                        Advanced algorithms that connect the perfect candidate with the right opportunity instantly.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div id="service-card-2"
+                    class="service-card animate-on-scroll fade-in-up h-fit flex flex-col justify-center items-center px-6 py-10 md:items-start md:text-left md:px-8 text-center"
+                    style="scroll-snap-align: start; animation-delay: 300ms;">
+                    <div class="service-icon mb-4 text-5xl">
+                        <i class="bi bi-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg md:text-xl">
+                        Quick Applications
+                    </h3>
+                    <p class="mt-2 text-gray-600 text-base md:text-base max-w-md">
+                        Apply to multiple jobs with one simple click and get fast responses within 24 hours.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div id="service-card-3"
+                    class="service-card animate-on-scroll fade-in-up h-fit flex flex-col justify-center items-center px-6 py-10 md:items-start md:text-left md:px-8 text-center"
+                    style="scroll-snap-align: start; animation-delay: 400ms;">
+                    <div class="service-icon mb-4 text-5xl">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg md:text-xl">
+                        Local Focus
+                    </h3>
+                    <p class="mt-2 text-gray-600 text-base md:text-base max-w-md">
+                        Dedicated exclusively to the Sri Lankan job market with localized solutions and support.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div id="service-card-4"
+                    class="service-card animate-on-scroll fade-in-up h-fit flex flex-col justify-center items-center px-6 py-10 md:items-start md:text-left md:px-8 text-center"
+                    style="scroll-snap-align: start; animation-delay: 500ms;">
+                    <div class="service-icon mb-4 text-5xl">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg md:text-xl">
+                        Community Network
+                    </h3>
+                    <p class="mt-2 text-gray-600 text-base md:text-base max-w-md">
+                        Join Sri Lanka's largest professional network with mentorship programs and career opportunities.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div id="service-card-5"
+                    class="service-card animate-on-scroll fade-in-up h-fit flex flex-col justify-center items-center px-6 py-10 md:items-start md:text-left md:px-8 text-center"
+                    style="scroll-snap-align: start; animation-delay: 600ms;">
+                    <div class="service-icon mb-4 text-5xl">
+                        <i class="bi bi-bell"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg md:text-xl">
+                        Real-time Alerts
+                    </h3>
+                    <p class="mt-2 text-gray-600 text-base md:text-base max-w-md">
+                        Get instant notifications for new job postings that match your preferred criteria and skills.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div id="service-card-6"
+                    class="service-card animate-on-scroll fade-in-up h-fit flex flex-col justify-center items-center px-6 py-10 md:items-start md:text-left md:px-8 text-center"
+                    style="scroll-snap-align: start; animation-delay: 700ms;">
+                    <div class="service-icon mb-4 text-5xl">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg md:text-xl">
+                        Company Insights
+                    </h3>
+                    <p class="mt-2 text-gray-600 text-base md:text-base max-w-md">
+                        Access detailed information about employers, company culture, and growth opportunities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About our founder -->
+        <section id="about" class="py-10 sm:py-16">
+            <div class="p-6 sm:p-10 founder-bg bg-cover bg-center backdrop-blur-lg rounded-2xl shadow-2xl text-left">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mx-auto p-6">
+                    <!-- Left content -->
+                    <div class="animate-on-scroll fade-in-up">
+                        <span
+                            class="inline-block bg-white text-black text-xs md:text-sm font-semibold px-4 py-1 md:px-8 md:py-2 rounded-full">ABOUT
+                            OUR FOUNDER</span>
+                        <h2 class="mt-6 md:mt-8 text-2xl md:text-4xl font-bold text-white text-left">
+                            Meet the Visionary Behind <br />
+                            <span class="text-[#199ddf]">QuickHire LK</span>
+                        </h2>
+                        <p class="mt-3 text-sm md:mt-5 text-white md:text-base">
+                            Founded by Thanseem, a passionate technologist and entrepreneur with
+                            over 2 years of experience in the Sri Lankan tech industry. His vision
+                            was simple: create a platform that truly serves both job seekers and
+                            employers in Sri Lanka.
+                        </p>
+
+                        <!-- Mission, Values, Commitment -->
+                        <div class="mt-8 space-y-6 text-white">
+                            <!-- Our Mission -->
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="feature-icon bg-blue-200 w-14 h-14 flex justify-center items-center rounded-full flex-shrink-0">
+                                    <i class="bi bi-globe text-blue-800 text-3xl drop-shadow-md"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Our Mission</h3>
+                                    <p class="text-sm">
+                                        To bridge the gap between talented Sri Lankan professionals and
+                                        meaningful career opportunities through technology and innovation.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Our Values -->
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="feature-icon bg-purple-200 w-14 h-14 flex justify-center items-center rounded-full flex-shrink-0">
+                                    <i class="bi bi-award text-purple-800 text-3xl drop-shadow-md"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Our Values</h3>
+                                    <p class="text-sm">
+                                        We believe in transparency, accessibility, and empowering every
+                                        individual to reach their full potential in their career journey.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Our Commitment -->
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="feature-icon bg-green-200 w-14 h-14 flex justify-center items-center rounded-full flex-shrink-0">
+                                    <i class="bi bi-check-circle text-green-800 text-3xl drop-shadow-md"></i>
+                                </div>
+
+                                <div>
+                                    <h3 class="font-bold text-lg">Our Commitment</h3>
+                                    <p class="text-sm">
+                                        100% free platform for all users. We're committed to keeping
+                                        QuickHire LK accessible to everyone, forever.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right content (Founder Card) -->
+                    <div class="animate-on-scroll fade-in-left">
+                        <div class="bg-white text-center rounded-2xl shadow-lg p-10 max-w-md mx-auto">
+                            <img src="assets/images/founder-image.jpg" alt="Founder Image"
+                                class="w-48 h-48 founder-image object-cover object-[center_10%] rounded-full mx-auto shadow-lg" />
+                            <h3 class="font-signature text-nowrap text-2xl md:text-4xl text-gray-800 mt-4">
+                                Mohamed Thanseem
+                            </h3>
+                            <p class="font-semibold text-[#4F51D8] mt-1">Founder & CEO</p>
+                            <p class="text-gray-500 text-xs md:text-sm mt-4">
+                                "Every great career starts with the right opportunity. My goal is to
+                                ensure that no talented individual in Sri Lanka misses out on their
+                                perfect job match."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works & Escrow Section -->
+        <section id="how-it-works" class="py-20 lg:py-28 bg-white">
+            <div class="text-center animate-on-scroll fade-in-up">
+                <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                    How <span class="text-[#4F51D8]">QuickHire LK</span> Works
+                </h2>
+                <p class="mt-4 text-sm md:text-lg text-gray-600 max-w-2xl mx-auto">
+                    Our streamlined process makes it easy to find work or hire talent.
+                </p>
+                <hr class="w-10/12 border-t-2 border-gray-200 mx-auto mt-10 md:mt-16 mb-16 md:mb-28">
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+                <!-- Step 1 -->
+                <div class="text-center animate-on-scroll fade-in-left" style="animation-delay: 100ms;">
+                    <div class="step-number-circle">01</div>
+                    <h3 class="mt-6 text-lg md:text-xl font-bold text-gray-900">Create Your Profile</h3>
+                    <p class="mt-2 text-gray-600 text-sm md:text-base">Sign up and create a profile, highlighting your
+                        skills,
+                        experience,
+                        and goals.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center animate-on-scroll fade-in-left" style="animation-delay: 200ms;">
+                    <div class="step-number-circle">02</div>
+                    <h3 class="mt-6 text-lg md:text-xl font-bold text-gray-900">Browse Opportunities</h3>
+                    <p class="mt-2 text-gray-600 text-sm md:text-base">Explore thousands of verified job listings from
+                        top companies
+                        across
+                        Sri Lanka.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center animate-on-scroll fade-in-left" style="animation-delay: 300ms;">
+                    <div class="step-number-circle">03</div>
+                    <h3 class="mt-6 text-lg md:text-xl font-bold text-gray-900">Apply with Ease</h3>
+                    <p class="mt-2 text-gray-600 text-sm md:text-base">Submit applications with a single click and track
+                        your application
+                        status in real-time.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="text-center animate-on-scroll fade-in-left" style="animation-delay: 400ms;">
+                    <div class="step-number-circle">04</div>
+                    <h3 class="mt-6 text-lg md:text-xl font-bold text-gray-900">Get Hired</h3>
+                    <p class="mt-2 text-gray-600 text-sm md:text-base">Connect with employers, ace your interviews, and
+                        land your dream
+                        job.
+                    </p>
+                </div>
+            </div>
+
+
+            <!--  Secure Escrow Payment System -->
+            <div
+                class="mt-20 lg:mt-32 p-8 md:p-12 rounded-2xl bg-gradient-to-br from-blue-50 via-cyan-50 to-green-50 animate-on-scroll fade-in-up">
+                <div class="text-center mb-10 md:mb-24">
+                    <h2 class="text-2xl md:text-4xl font-bold text-gray-900">Secure Escrow Payment System</h2>
+                    <p class="mt-3 text-sm md:text-lg text-gray-600">Your money is protected until work is complete to
+                        your
+                        satisfaction</p>
+                </div>
+
+                <!-- Escrow Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                    <!-- Card 1: Funds Secured -->
+                    <div class="escrow-card animate-on-scroll fade-in-up" style="animation-delay: 100ms;">
+                        <div class="escrow-icon-wrapper bg-blue-100">
+                            <i class="bi bi-check-circle text-blue-600 text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mt-4">Funds Secured</h3>
+                        <p class="text-gray-500 text-sm mt-1">Client deposits payment into secure escrow account.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Work Progresses -->
+                    <div class="escrow-card animate-on-scroll fade-in-up" style="animation-delay: 200ms;">
+                        <div class="escrow-icon-wrapper bg-orange-100">
+                            <i class="bi bi-clock text-orange-600 text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mt-4">Work Progresses</h3>
+                        <p class="text-gray-500 text-sm mt-1">Professional completes milestones as agreed.</p>
+                    </div>
+
+                    <!-- Card 3: Safe Release -->
+                    <div class="escrow-card animate-on-scroll fade-in-up" style="animation-delay: 300ms;">
+                        <div class="escrow-icon-wrapper bg-green-100">
+                            <i class="bi bi-safe2 text-green-600 text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mt-4">Safe Release</h3>
+                        <p class="text-gray-500 text-sm mt-1">Funds released upon client approval of work.</p>
+                    </div>
+                </div>
+
+                <!-- Guarantee -->
+                <div class="mt-8 md:mt-12 text-center animate-on-scroll fade-in-up" style="animation-delay: 400ms;">
+                    <div class="inline-flex items-center gap-2 bg-white py-2 px-4 rounded-full text-sm">
+                        <i class="bi bi-check-circle-fill text-green-500"></i>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm">100% Payment Protection
+                            Guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Job Categories Section -->
+        <section id="categories" class="py-18 pb-6 mb-16 bg-white">
+            <!-- Section Header -->
+            <div class="text-center animate-on-scroll fade-in-left">
+                <span
+                    class="inline-block px-2 py-1 md:px-5 md:py-2 mb-5 md:mb-8 rounded-full bg-blue-100 text-blue-800 text-xs md:text-sm font-semibold">
+                    Explore
+                </span>
+                <h2 class="mt-5 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                    Popular Job Categories
+                </h2>
+                <p class="mt-7 md:text-lg text-gray-600 mx-auto text-wrap">
+                    Browse through the most in-demand categories or explore all job types to find your perfect
+                    match.
+                </p>
+            </div>
+
+
+            <div class="flex justify-between gap-2 md:gap-4 mt-16 flex-wrap md:flex-nowrap">
+                <!-- Card 1 -->
+                <div class="w-40 sm:w-48 rounded-2xl shadow-lg bg-[#9c704c] p-2 flex flex-col h-60 md:h-72 
+                transition-transform duration-500 hover:rotate-1 hover:-translate-y-1 hover:shadow-xl 
+                animate-on-scroll fade-in-left animation-delay-200">
+                    <div class="p-1">
+                        <h2 class="text-white text-xl font-bold">Designers</h2>
+                    </div>
+                    <div class="flex-1 rounded-2xl overflow-hidden">
+                        <img src="assets/images/image13.jpg" alt="Designers"
+                            class="rounded-xl object-cover w-full h-full">
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="w-48 sm:w-80 rounded-2xl shadow-lg bg-[#0d5878] p-2 flex flex-col h-60 md:h-72 
+                transition-transform duration-500 hover:-rotate-1 hover:shadow-lg 
+                animate-on-scroll fade-in-left animation-delay-300">
+                    <div class="p-1">
+                        <h2 class="text-white text-xl font-bold">Programming</h2>
+                    </div>
+                    <div class="flex-1 rounded-2xl overflow-hidden">
+                        <img src="assets/images/image14.jpg" alt="Programming"
+                            class="rounded-xl object-cover w-full h-full">
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="w-52 sm:w-72 rounded-2xl shadow-lg bg-[#ed8c42] p-2 flex flex-col h-60 md:h-72 
+                transition-transform duration-500 hover:rotate-1 hover:-translate-y-1 hover:shadow-xl 
+                animate-on-scroll fade-in-up animation-delay-400">
+                    <div class="p-1">
+                        <h2 class="text-white text-xl font-bold">Construction</h2>
+                    </div>
+                    <div class="flex-1 rounded-2xl overflow-hidden">
+                        <img src="assets/images/image10.jpg" alt="Construction"
+                            class="rounded-xl object-cover w-full h-full">
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="w-36 sm:w-80 rounded-2xl shadow-lg bg-[#949487] p-2 flex flex-col h-60 md:h-72 
+                transition-transform duration-500 hover:rotate-1 hover:-translate-y-1 hover:shadow-xl 
+                animate-on-scroll fade-in-right animation-delay-500">
+                    <div class="p-1">
+                        <h2 class="text-white text-xl font-bold">Writing</h2>
+                    </div>
+                    <div class="flex-1 rounded-2xl overflow-hidden">
+                        <img src="assets/images/image11.jpg" alt="Writing"
+                            class="rounded-xl object-cover w-full h-full">
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="w-full sm:w-60 rounded-2xl shadow-lg bg-[#bac3d4] p-2 flex flex-col h-60 md:h-72 
+                transition-transform duration-500 hover:-rotate-1 hover:shadow-lg 
+                animate-on-scroll fade-in-right animation-delay-600">
+                    <div class="p-1">
+                        <h2 class="text-white text-xl font-medium">Marketing</h2>
+                    </div>
+                    <div class="flex-1 rounded-2xl overflow-hidden">
+                        <img src="assets/images/image12.jpg" alt="Marketing"
+                            class="rounded-xl object-cover w-full h-full">
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="call-to-action" class="bg-white pb-15 lg:pb-20">
+            <div
+                class="bg-[#dbebff] text-center rounded-2xl p-10 md:p-16 animate-on-scroll fade-in-up flex flex-col items-center">
+                <h2 class="font-Roboto text-2xl md:text-4xl lg:text-5xl text-black">
+                    Freelance services at your <span class="text-[#1B93CE] font-display">fingertips</span>
+                </h2>
+
+                <div class="mt-12">
+                    <a href="authentication/login.php"
+                        class="join-btn relative overflow-hidden px-6 md:px-10 py-4 rounded-lg shadow-lg text-sm md:text-base font-bold text-black hover:text-white transition-all duration-500 ease-in-out inline-block">
+                        Join QuickHire LK
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer" class="animate-on-scroll fade-in-up custom-width mx-auto px-6 mb-6">
+        <div class="bg-black rounded-2xl w-full custom-width">
+            <div class="mx-auto py-16 px-6 md:px-14">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl">
+
+                    <!-- Column 1: Brand and Socials -->
+                    <div class="md:col-span-2 lg:col-span-2 max-w-sm">
+                        <h2 class="text-2xl font-bold text-white font-Roboto">
+                            QUICKHIRE <span class="text-blue-500">LK</span>
+                        </h2>
+                        <p class="mt-4 text-gray-400 text-sm leading-relaxed text-left">
+                            Sri Lanka's Premier Platform Connecting Talented Professionals With Exciting
+                            Opportunities. Find Work, Hire Talent, And Grow Your Business With QuickHire LK.
+                        </p>
+                        <div class="mt-8 flex space-x-7">
+                            <a href="#" class="footer-social-link text-white" aria-label="Facebook">
+                                <i class="bi bi-facebook text-2xl"></i>
+                            </a>
+                            <a href="#" class="footer-social-link text-white" aria-label="Instagram">
+                                <i class="bi bi-instagram text-2xl"></i>
+                            </a>
+                            <a href="#" class="footer-social-link text-white" aria-label="Twitter">
+                                <i class="bi bi-twitter-x text-2xl"></i>
+                            </a>
+                            <a href="#" class="footer-social-link text-white" aria-label="LinkedIn">
+                                <i class="bi bi-linkedin text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-800 my-2 md:hidden">
+
+                    <!-- Column 2: Quick Links -->
+                    <div>
+                        <h3 class="font-Roboto font-semibold text-white tracking-wider">Quick Links</h3>
+                        <div
+                            class="mt-4 flex flex-row flex-wrap items-center gap-4 text-sm md:flex-col md:items-start md:gap-1 md:space-y-3">
+                            <a href="#home" class="block text-gray-400 hover:text-white transition-colors">Home</a>
+                            <a href="#call-to-action" class=" text-gray-400 hover:text-white transition-colors">Find
+                                Jobs</a>
+                            <a href="#call-to-action" class=" text-gray-400 hover:text-white transition-colors">Hire
+                                Talent</a>
+                            <a href="#how-it-works" class=" text-gray-400 hover:text-white transition-colors">How
+                                It Works</a>
+                            <a href="#about-us" class=" text-gray-400 hover:text-white transition-colors">About
+                                Us</a>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div>
+                        <h3 class="font-semibold text-white tracking-wider">Resources</h3>
+                        <div
+                            class="mt-4 flex flex-row flex-wrap items-center gap-4 text-sm md:flex-col md:items-start md:gap-1 md:space-y-3">
+                            <a href="pages/coming-soon.html"
+                                class="block text-gray-400 hover:text-white transition-colors">Blog</a>
+                            <a href="pages/coming-soon.html"
+                                class="block text-gray-400 hover:text-white transition-colors">Help
+                                Center</a>
+                            <a href="pages/coming-soon.html"
+                                class="block text-gray-400 hover:text-white transition-colors">Success
+                                Stories</a>
+                            <a href="pages/terms-of-service.html"
+                                class="block text-gray-400 hover:text-white transition-colors">Terms of
+                                Service</a>
+                            <a href="pages/privacy-policy.html"
+                                class="block text-gray-400 hover:text-white transition-colors">Privacy
+                                Policy</a>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Contact -->
+                    <div>
+                        <h3 class="font-semibold text-white tracking-wider">Contact</h3>
+                        <div class="mt-4 space-y-3 text-gray-400 text-sm">
+                            <p>123 Innovation Drive, Colombo 04, Sri Lanka</p>
+                            <p>+94 76 000 1510</p>
+                            <p>info@quickhirelk.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div
+                    class="mt-12 pt-8 border-t border-gray-800 flex flex-col-reverse md:flex-row md:justify-between items-center text-sm text-gray-500 space-y-4 md:space-y-0">
+                    <p class="mt-3 md:mt-0">© 2025 QuickHire LK. All Rights Reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="pages/terms-of-service.html" class="hover:text-white transition-colors">Terms</a>
+                        <a href="pages/privacy-policy.html" class="hover:text-white transition-colors">Privacy</a>
+                        <a href="pages/cookies-policy.html" class="hover:text-white transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
