@@ -15,7 +15,6 @@
 </head>
 
 <body class="m-0 h-screen box-border flex flex-row gap-8 bg-white p-5 md:p-2 overflow-hidden">
-
   <!-- Left Image Side -->
   <div class="hidden md:block w-1/2 h-full overflow-hidden rounded-xl">
     <img src="../assets/images/login-image.jpg" alt="Login Background" class="w-full h-full object-cover" />
