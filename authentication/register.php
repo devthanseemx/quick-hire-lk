@@ -19,12 +19,12 @@ unset($_SESSION['user_type']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - QuickHire LK </title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/auth.css"> <!-- Your common CSS with animations -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
-<body class="m-0 p-2 h-screen box-border flex gap-8 bg-white">
+<body class="m-0 p-2 h-screen box-border flex gap-8 bg-white overflow-hidden">
 
     <!-- Left Image Side -->
     <div class="hidden md:block w-1/2 h-full overflow-hidden rounded-xl">

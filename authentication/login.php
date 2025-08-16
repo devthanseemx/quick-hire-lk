@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Page</title>
-  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/auth.css">
   <!-- Tailwind CSS File or CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Bootstrap Icons -->
@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
-<body class="m-0 h-screen box-border flex flex-row gap-8 bg-white p-5 md:p-2">
+<body class="m-0 h-screen box-border flex flex-row gap-8 bg-white p-5 md:p-2 overflow-hidden">
 
   <!-- Left Image Side -->
   <div class="hidden md:block w-1/2 h-full overflow-hidden rounded-xl">
@@ -69,6 +69,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="../assets/js/toast-notifications.js"></script>
   <script src="../assets/js/login-validation.js"></script>
+
 </body>
 
 </html>

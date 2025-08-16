@@ -1,5 +1,4 @@
 <?php
-// This is the single most important line for any login system.
 session_start();
 
 header('Content-Type: application/json');
@@ -8,7 +7,7 @@ require_once '../db/db_connection.php';
 $response = ['status' => 'error', 'message' => 'An unknown error occurred.'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'] ?? '';
+    $username = strtolower(trim($_POST['username'] ?? ''));
     $password = $_POST['password'] ?? '';
 
     if (empty($username) || empty($password)) {
@@ -17,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Prepare a statement to prevent SQL Injection
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
+    // Check login from user_accounts
+    $stmt = $conn->prepare("SELECT id, username, password, user_type FROM user_accounts WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -26,22 +25,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        // Verify the hashed password
         if (password_verify($password, $user['password'])) {
-            // Password is correct, start the session
+            // Store session data
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            
-            $response = ['status' => 'success', 'message' => 'Login success'];
+            $_SESSION['user_type'] = $user['user_type'];
+
+            // Decide dashboard URL based on role
+            if ($user['user_type'] === 'admin') {
+                $dashboard = '../layouts/admin/admin_dashboard.php';
+            } elseif ($user['user_type'] === 'employee') {
+                $dashboard = '../layouts/employee/employee_dashboard.php';
+            } else {
+                $dashboard = '../layouts/user/user_dashboard.php';
+            }
+
+            $response = [
+                'status' => 'success',
+                'message' => 'Login successful',
+                'redirect' => $dashboard
+            ];
         } else {
-            // Incorrect password
             $response = ['status' => 'error', 'message' => 'Invalid username or password.'];
         }
     } else {
-        // No user found with that username
         $response = ['status' => 'error', 'message' => 'Invalid username or password.'];
     }
+
     $stmt->close();
 }
 

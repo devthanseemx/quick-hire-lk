@@ -1,4 +1,3 @@
-// File: assets/js/login-validation.js
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('login-form');
     if (!form) return;
@@ -27,11 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('login-api.php', { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
-                // All server responses are shown as toasts
+                // Show server response in a toast
                 showToast(data.message, data.status);
+
                 if (data.status === 'success') {
-                    // Redirect to dashboard on success
-                    setTimeout(() => { window.location.href = '../layouts/user/user-dashboard.php'; }, 2000);
+                    // Redirect to role-based dashboard from server response
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 2000);
                 }
             })
             .catch(error => {
@@ -39,14 +41,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 showToast('A network error occurred. Please try again.', 'error');
             });
     });
+});
 
-    // --- Password Visibility Toggle ---
-    const togglePasswordIcon = document.getElementById('togglePassword');
-    const passwordField = document.getElementById('password');
-    togglePasswordIcon.addEventListener('click', function() {
-        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordField.setAttribute('type', type);
-        this.classList.toggle('bi-eye');
-        this.classList.toggle('bi-eye-slash');
+
+// --- Password Visibility Toggle ---
+const togglePasswordIcon = document.getElementById('togglePassword');
+const passwordField = document.getElementById('password');
+togglePasswordIcon.addEventListener('click', function () {
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('bi-eye');
+    this.classList.toggle('bi-eye-slash');
+});
+
+// Animation on Page Load
+document.addEventListener("DOMContentLoaded", function () {
+    const leftImage = document.querySelector(".hidden.md\\:block");
+    const title = document.querySelector(".text-3xl.font-bold");
+    const subtitle = document.querySelector(".text-gray-500.text-center.mb-20");
+    const formElements = Array.from(document.querySelectorAll("#login-form > *, .my-8, .mt-6"));
+
+    if (leftImage) {
+        leftImage.classList.add('animate-slide-in-from-left');
+    }
+
+    if (title) {
+        title.classList.add('animate-slide-in-from-bottom');
+        title.style.animationDelay = '0.2s';
+    }
+
+    if (subtitle) {
+        subtitle.classList.add('animate-slide-in-from-bottom');
+        subtitle.style.animationDelay = '0.3s';
+    }
+
+    formElements.forEach((element, index) => {
+        element.classList.add('animate-slide-in-from-bottom');
+        element.style.animationDelay = `${0.4 + index * 0.1}s`;
     });
 });

@@ -1,0 +1,67 @@
+@media screen and (min-width: 1800px) {
+    .custom-margin {
+        margin-bottom: 6rem;
+    }
+}
+
+
+@media screen and (max-width: 1800px) {
+    .custom-margin {
+        margin-bottom: 3.5rem;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation Classes - UPDATED DURATION */
+.animate-slide-in-from-left {
+    /* Increased from 0.7s to 1.2s */
+    animation: slideInFromLeft 1.2s ease-out forwards;
+}
+
+.animate-slide-in-from-right {
+    /* Increased from 0.7s to 1.2s */
+    animation: slideInFromRight 1.2s ease-out forwards;
+}
+
+.animate-slide-in-from-bottom {
+    /* Increased from 0.5s to 1s */
+    animation: slideInFromBottom 1s ease-out forwards;
+    opacity: 0;
+    /* Start as transparent */
+}
