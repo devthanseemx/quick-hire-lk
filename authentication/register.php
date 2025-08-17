@@ -24,7 +24,7 @@ unset($_SESSION['user_type']);
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
-<body class="m-0 p-2 h-screen box-border flex gap-8 bg-white overflow-hidden">
+<body class="m-0 p-6 md:p-2 h-screen box-border flex gap-8 bg-white overflow-hidden">
 
     <!-- Left Image Side -->
     <div class="hidden md:block w-1/2 h-full overflow-hidden rounded-xl">

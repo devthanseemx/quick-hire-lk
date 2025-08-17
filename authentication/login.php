@@ -46,7 +46,7 @@
 
         <p class="mb-9 text-sm text-left text-gray-500">
           Forgot Password?
-          <a href="#" class="text-indigo-600 hover:underline">Reset it</a>
+          <a href="forgot_password.php" class="text-indigo-600 hover:underline">Reset it</a>
         </p>
 
         <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 transition">
